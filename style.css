@@ -33,7 +33,7 @@ body {
     border: 0;
     outline: 0;
     background-color: #fff7f7;
-    color: #333333; /* Dark text color */
+    color: #333333; 
     padding: 10px 25px;
     height: 60px;
     border-radius: 30px;
@@ -124,8 +124,8 @@ body {
     }
 
     .details {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+       
     }
 
     .humidity,
@@ -134,7 +134,7 @@ body {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 350px) {
     .card {
         margin: 20px auto 0;
         padding: 20px 15px;
@@ -179,6 +179,7 @@ body {
     .humidity,
     .wind {
         font-size: 20px;
+        
         display: inline-block;
     }
 
