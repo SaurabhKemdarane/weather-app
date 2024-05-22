@@ -6,13 +6,13 @@
 }
 
 body {
-    background-color: #1c1919; /* Midnight Black */
+    background-color: #1c1919; 
 }
 
 .card {
     width: 90%;
     max-width: 470px;
-    background-color: rgba(23, 22, 22, 0.9); /* Adjusted to valid rgba format */
+    background-color: rgba(23, 22, 22, 0.9); 
     color: #fff; 
     margin: 100px auto 0;
     border-radius: 20px;
@@ -183,7 +183,7 @@ body {
     }
 
     .humidity {
-        margin-right: 20px; /* Add some space between the humidity and wind */
+        margin-right: 20px; 
     }
 
     .col img {
