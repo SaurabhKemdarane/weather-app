@@ -14,7 +14,7 @@ body {
     max-width: 470px;
     background-color: rgba(23, 22, 22, 0.9);
     color: #fff;
-    margin: 100px auto 0;
+    margin: 45px auto 0;
     border-radius: 20px;
     padding: 40px 35px;
     text-align: center;
@@ -27,6 +27,7 @@ body {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin-left: 5%;
 }
 
 .search input {
@@ -40,6 +41,7 @@ body {
     flex: 1;
     margin-right: 16px;
     font-size: 18px;
+    margin-top: -10%;
 }
 
 .search input::placeholder {
@@ -90,7 +92,10 @@ body {
     align-items: center;
     text-align: left;
 }
-
+.input{
+    margin-bottom: 10%;
+    margin-top: -5%;
+}
 .humidity,
 .wind {
     font-size: 28px;
@@ -99,6 +104,7 @@ body {
 
 .weather {
     display: none;
+   
 }
 
 .watermark {
@@ -109,86 +115,50 @@ body {
     opacity: 0.5;
 }
 
-@media (max-width: 768px) {
-    .card {
-        margin: 50px auto 0;
-        padding: 30px 20px;
-    }
-
-    .weather h1 {
-        font-size: 60px;
-    }
-
-    .weather h2 {
-        font-size: 35px;
-    }
-
-    .details {
-        flex-direction: row;
-
-    }
-
-    .humidity,
-    .wind {
-        font-size: 24px;
-    }
+#btnLocation {
+    width: 150px;
+    height: 30px;
+    position: relative;
+    border: 0;
+    background-color: #fff7f7;
+    color: #333333;
+    padding: 5px 10px;
+    border-radius: 30px;
+    font-size: 11px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    top: 75px;
+    left: -97px;
 }
 
-@media (max-width: 350px) {
+@media (max-width: 428px) {
+
     .card {
-        margin: 20px auto 0;
-        padding: 20px 15px;
-    }
-
-    .search {
-        display: flex;
-        justify-content: center;
-        margin: 0 auto 20px;
-    }
-
-    .search input {
-        font-size: 16px;
-        padding: 10px 15px;
-        height: 50px;
-    }
-
-    .search input::placeholder {
-        font-size: 16px;
-    }
-
-    .search button {
-        width: 50px;
-        height: 50px;
+        margin: 20px auto 0; 
+        padding: 20px; 
     }
 
     .weather h1 {
-        font-size: 50px;
+        font-size: 50px;/
     }
 
     .weather h2 {
-        font-size: 30px;
+        font-size: 28px; 
     }
 
     .details {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0 10px;
-        margin-top: 30px;
+        margin-top: 20px; 
     }
 
     .humidity,
     .wind {
-        font-size: 20px;
-
-        display: inline-block;
-    }
-
-    .humidity {
-        margin-right: 20px;
+        font-size: 18px;
     }
 
     .col img {
-        width: 40px;
-        margin: 5px;
+        width: 30px; 
+        margin: 3px; 
     }
 }
