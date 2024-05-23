@@ -29,6 +29,7 @@ try {
             document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "&deg;C";
             document.querySelector(".humidity").innerHTML = Math.round(data.main.humidity) + "%";
             document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
+            data.weather[0].main = "Snow"
 
             console.log(data.weather[0].main);
             if (data.weather[0].main == "Clouds") {
