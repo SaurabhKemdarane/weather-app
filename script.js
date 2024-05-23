@@ -16,7 +16,6 @@ try {
             search.placeholder = "City not found";
             // alert("City not found");
             document.querySelector(".weather").style.display = "none";
-            //reset console
             setTimeout(() => {
                 resetPlaceholder() + console.log("placeholder reset");
             }, 2000);
@@ -29,7 +28,6 @@ try {
             document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "&deg;C";
             document.querySelector(".humidity").innerHTML = Math.round(data.main.humidity) + "%";
             document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
-           console.log(data.weather[0].main);
 
             console.log(data.weather[0].main);
             if (data.weather[0].main == "Clouds") {
@@ -67,3 +65,45 @@ try {
 } catch (error) {
     console.log(error);
 }
+
+
+// Function to get the user's location
+async function getLocation() {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+    console.log("Requesting location...");
+    document.querySelector(".weather").style.display = "block";
+    
+
+}
+
+async function fetchWeather(latitude, longitude) {
+    const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=fd9dc91624c151ec1c24527b60d2f050&units=metric`);
+    const data = await res.json();
+    console.log(data);
+    document.querySelector(".city").innerHTML = data.name;
+            document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "&deg;C";
+            document.querySelector(".humidity").innerHTML = Math.round(data.main.humidity) + "%";
+            document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
+            document.getElementById("btnLocation").style.display = "none";
+}
+
+// Function to display the position
+function showPosition(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+    fetchWeather(latitude, longitude);
+}
+
+// Function to handle errors
+function showError(error) {
+    if (error.PERMISSION_DENIED) {
+        alert("Please allow location access.");
+    } else {
+        console.error(error.message);
+    }
+}
+
+const btnLocation = document.querySelector("#btnLocation");
+btnLocation.addEventListener("click", getLocation);
+
