@@ -121,7 +121,6 @@ function showError(error) {
 async function getLocation() {
     navigator.geolocation.getCurrentPosition(showPosition, showError);
     console.log("Requesting location...");
-    showWeather();
 }
 
 searchBtn.addEventListener("click", handleSearch);
