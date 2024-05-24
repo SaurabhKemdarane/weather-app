@@ -7,6 +7,7 @@ const search = document.querySelector(".search-bar");
 const searchBtn = document.querySelector(".search button");
 let icon = document.querySelector(".weather-img");
 const locationBtn = document.querySelector("#btnLocation");
+const weatherDiv = document.querySelector(".weather");
 
 function resetPlaceholder() {
     search.placeholder = "Enter city name";
@@ -17,7 +18,7 @@ async function fetchWeatherByCity(city) {
         const response = await fetch(`${url}${city}&appid=${apiID}`);
         if (response.status === 404) {
             search.placeholder = "City not found";
-            document.querySelector(".weather").style.display = "none";
+            hideWeather();
             setTimeout(() => {
                 resetPlaceholder();
             }, 3000);
@@ -49,8 +50,7 @@ function displayWeather(data) {
     document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "&deg;C";
     document.querySelector(".humidity").innerHTML = Math.round(data.main.humidity) + "%";
     document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
-    document.querySelector(".weather").style.display = "block";
-
+    
     if (data.weather[0].main === "Clouds") {
         icon.src = "/weather-app-img/images/clouds.png";
     } else if (data.weather[0].main === "Clear") {
@@ -64,11 +64,29 @@ function displayWeather(data) {
     } else if (data.weather[0].main === "Mist") {
         icon.src = "/weather-app-img/images/mist.png";
     }
+    
+    showWeather();
+}
+
+function showWeather() {
+    weatherDiv.style.display = 'block';
+    setTimeout(() => {
+        weatherDiv.classList.remove('hide');
+        weatherDiv.classList.add('show');
+    }, 10); // Small timeout to ensure the display change is rendered
+}
+
+function hideWeather() {
+    weatherDiv.classList.remove('show');
+    weatherDiv.classList.add('hide');
+    setTimeout(() => {
+        weatherDiv.style.display = 'none';
+    }, 500); // Match this to the CSS transition duration
 }
 
 function setHideWeatherTimeout() {
     setTimeout(() => {
-        document.querySelector(".weather").style.display = "none";
+        hideWeather();
     }, 5000);
 }
 
@@ -103,7 +121,7 @@ function showError(error) {
 async function getLocation() {
     navigator.geolocation.getCurrentPosition(showPosition, showError);
     console.log("Requesting location...");
-    document.querySelector(".weather").style.display = "block";
+    showWeather();
 }
 
 searchBtn.addEventListener("click", handleSearch);
@@ -114,3 +132,4 @@ search.addEventListener("keypress", (event) => {
 });
 
 locationBtn.addEventListener("click", getLocation);
+
