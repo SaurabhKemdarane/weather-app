@@ -73,7 +73,7 @@ function showWeather() {
     setTimeout(() => {
         weatherDiv.classList.remove('hide');
         weatherDiv.classList.add('show');
-    }, 10); // Small timeout to ensure the display change is rendered
+    }, 30); 
 }
 
 function hideWeather() {
@@ -81,7 +81,7 @@ function hideWeather() {
     weatherDiv.classList.add('hide');
     setTimeout(() => {
         weatherDiv.style.display = 'none';
-    }, 500); // Match this to the CSS transition duration
+    }, 500); 
 }
 
 function setHideWeatherTimeout() {
