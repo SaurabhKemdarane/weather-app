@@ -92,12 +92,10 @@ body {
     align-items: center;
     text-align: left;
 }
-
-.input {
+.input{
     margin-bottom: 10%;
     margin-top: -5%;
 }
-
 .humidity,
 .wind {
     font-size: 28px;
@@ -105,21 +103,8 @@ body {
 }
 
 .weather {
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.5s, transform 0.5s;
-    display: none; /* Initially hidden */
-}
-
-.weather.show {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.weather.hide {
-    opacity: 0;
-    transform: translateY(-20px);
+    display: none;
+   
 }
 
 .watermark {
@@ -149,13 +134,14 @@ body {
 }
 
 @media (max-width: 428px) {
+    
     .card {
         margin: 20px auto 0;
-        padding: 20px;
+        padding: 20px; 
     }
 
     .weather h1 {
-        font-size: 50px;
+        font-size: 50px; 
     }
 
     .weather h2 {
@@ -163,16 +149,17 @@ body {
     }
 
     .details {
-        margin-top: 20px;
+        margin-top: 20px; 
     }
 
     .humidity,
     .wind {
-        font-size: 18px;
+        font-size: 18px; 
     }
 
     .col img {
-        width: 30px;
-        margin: 3px;
+        width: 30px; 
+        margin: 3px; /* Adjusted margin */
     }
+    
 }
