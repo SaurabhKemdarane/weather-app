@@ -5,7 +5,7 @@ let longitude;
 const url2 = `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=${apiID}`;
 const search = document.querySelector(".search-bar");
 const searchBtn = document.querySelector(".search button");
-let icon = document.querySelector(".weather-img");
+let icon;
 const locationBtn = document.querySelector("#btnLocation");
 const weatherDiv = document.querySelector(".weather");
 
@@ -50,21 +50,35 @@ function displayWeather(data) {
     document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "&deg;C";
     document.querySelector(".humidity").innerHTML = Math.round(data.main.humidity) + "%";
     document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
-    
-    if (data.weather[0].main === "Clouds") {
-        icon.src = "/weather-app-img/images/clouds.png";
-    } else if (data.weather[0].main === "Clear") {
-        icon.src = "/weather-app-img/images/clear.png";
-    } else if (data.weather[0].main === "Rain") {
-        icon.src = "/weather-app-img/images/rain.png";
-    } else if (data.weather[0].main === "Snow") {
-        icon.src = "/weather-app-img/images/snow.png";
-    } else if (data.weather[0].main === "Drizzle") {
-        icon.src = "/weather-app-img/images/drizzle.png";
-    } else if (data.weather[0].main === "Mist") {
-        icon.src = "/weather-app-img/images/mist.png";
+
+    icon = document.querySelector(".weather-img");
+
+    if (icon) {
+        switch (data.weather[0].main) {
+            case "Clouds":
+                icon.src = "/weather-app-img/images/clouds.png";
+                break;
+            case "Clear":
+                icon.src = "/weather-app-img/images/clear.png";
+                break;
+            case "Rain":
+                icon.src = "/weather-app-img/images/rain.png";
+                break;
+            case "Snow":
+                icon.src = "/weather-app-img/images/snow.png";
+                break;
+            case "Drizzle":
+                icon.src = "/weather-app-img/images/drizzle.png";
+                break;
+            case "Mist":
+                icon.src = "/weather-app-img/images/mist.png";
+                break;
+            default:
+                icon.src = "/weather-app-img/images/default.png";
+                break;
+        }
     }
-    
+
     showWeather();
 }
 
@@ -85,7 +99,8 @@ function hideWeather() {
 }
 
 function setHideWeatherTimeout() {
-    setTimeout(() => {
+    clearTimeout(weatherDiv.hideTimeout);
+    weatherDiv.hideTimeout = setTimeout(() => {
         hideWeather();
     }, 5000);
 }
