@@ -50,7 +50,7 @@ function displayWeather(data) {
     document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "&deg;C";
     document.querySelector(".humidity").innerHTML = Math.round(data.main.humidity) + "%";
     document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
-    
+    console.log(data.weather[0].main);
     if (data.weather[0].main === "Clouds") {
         icon.src = "/weather-app-img/images/clouds.png";
     } else if (data.weather[0].main === "Clear") {
